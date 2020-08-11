@@ -114,6 +114,12 @@ add_action('after_setup_theme', 'quantum_setup');
  *
  * @global int $content_width
  */
+
+add_filter( 'excerpt_more', 'new_excerpt_more' );
+function new_excerpt_more( $more ){
+	global $post;
+	return '<a class="read-more" href="'. get_permalink($post) . '">Читать дальше...</a>';
+}
 function quantum_content_width()
 {
 	// This variable is intended to be overruled from themes.
@@ -147,6 +153,12 @@ add_action('widgets_init', 'quantum_widgets_init');
 /**
  * Enqueue scripts and styles.
  */
+add_filter('comment_form_default_fields', 'unset_url_field');
+function unset_url_field($fields){
+    if(isset($fields['url']))
+       unset($fields['url']);
+       return $fields;
+}
 function quantum_scripts()
 {
 	wp_enqueue_style('quantum-style', get_stylesheet_uri(), array(), _S_VERSION);

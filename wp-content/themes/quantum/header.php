@@ -20,6 +20,18 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 	<?php wp_head(); ?>
+	<script src="https://kit.fontawesome.com/97f23fa3e3.js" crossorigin="anonymous"></script>
+	<style>
+		.site-header__navigation>a.bvi-link-widget,
+		.site-header__navigation>a.bvi-link-shortcode {
+			background-color: #00000000 !important;
+		}
+
+		a.bvi-link-widget,
+		a.bvi-link-shortcode {
+			color: #404040 !important;
+		}
+	</style>
 </head>
 
 <body <?php body_class(); ?>>
@@ -31,16 +43,16 @@
 			<div class="container">
 				<div class="site-header__branding">
 					<?php the_custom_logo(); ?>
-					<div class="site-header__branding-text">
-						<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-						<?php
-						$quantum_description = get_bloginfo('description', 'display');
-						if ($quantum_description || is_customize_preview()) :
-						?>
-							<p class="site-description"><?php echo $quantum_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-														?></p>
-						<?php endif; ?>
-					</div>
+					<?php
+					$quantum_description = get_bloginfo('description', 'display');
+					if ($quantum_description || is_customize_preview()) :
+					?>
+						<div class="site-header__branding-text">
+							<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
+
+							<p class="site-description"><?php echo $quantum_description; ?></p>
+						</div>
+					<?php endif; ?>
 				</div><!-- .site-branding -->
 
 				<nav id="site-navigation" class="site-header__navigation">
@@ -55,12 +67,14 @@
 					<a class="site-header__navigation-search" href='#search'>
 						<i class="fa fa-search" aria-hidden="true"></i>
 					</a>
+
 					<?php echo do_shortcode('[bvi]'); ?>
+
 				</nav><!-- #site-navigation -->
 				<nav class="mobile-menu">
 					<div class="container">
 						<div class="menu-list">
-						<label>МЕНЮ</label>
+							<label>МЕНЮ</label>
 							<?php
 							wp_nav_menu(
 								array(
@@ -76,34 +90,34 @@
 					</div>
 				</nav>
 				<div class="site-header__contacts">
-					<a class="site-header__contacts-phone" href='tel:<?php echo get_option('site_telephone-link', '#'); ?>'>
-						<?php
-						$tel = get_option('site_telephone');
-						if ($tel != null) { ?>
-							<div class="phone-number"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo get_option('site_telephone'); ?></div>
-						<?php } ?>
-					</a>
-					<a class="site-header__contacts-phone" href='tel:<?php echo get_option('site_telephone-link-2', '#'); ?>'>
-						<?php
-						$tel = get_option('site_telephone-2');
-						if ($tel != null) { ?>
+					<?php
+					$tel = get_option('site_telephone');
+					if ($tel != null) { ?>
+						<a class="site-header__contacts-phone" href='tel:<?php echo get_option('site_telephone-link', '#'); ?>'>
+							<div class="phone-number"><i class="fa fa-phone" aria-hidden="true"></i><?php echo get_option('site_telephone'); ?></div>
+						</a>
+					<?php } ?>
+					<?php
+					$tel = get_option('site_telephone-2');
+					if ($tel != null) { ?>
+						<a class="site-header__contacts-phone" href='tel:<?php echo get_option('site_telephone-link-2', '#'); ?>'>
 							<div class="phone-number"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo get_option('site_telephone-2'); ?></div>
-						<?php } ?>
-					</a>
-					<a class="site-header__contacts-mail" href='mailto:<?php echo get_option('site_mail', '#'); ?>'>
-						<?php
-						$mail = get_option('site_mail');
-						if ($mail != null) { ?>
+						</a>
+					<?php } ?>
+					<?php
+					$mail = get_option('site_mail');
+					if ($mail != null) { ?>
+						<a class="site-header__contacts-mail" href='mailto:<?php echo get_option('site_mail', '#'); ?>'>
 							<div class="mail"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo get_option('site_mail'); ?></div>
-						<?php } ?>
-					</a>
-					<a class="site-header__contacts-mail" href='mailto:<?php echo get_option('site_mail-2', '#'); ?>'>
-						<?php
-						$mail = get_option('site_mail-2');
-						if ($mail != null) { ?>
+						</a>
+					<?php } ?>
+					<?php
+					$mail = get_option('site_mail-2');
+					if ($mail != null) { ?>
+						<a class="site-header__contacts-mail" href='mailto:<?php echo get_option('site_mail-2', '#'); ?>'>
 							<div class="mail"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo get_option('site_mail-2'); ?></div>
-						<?php } ?>
-					</a>
+						</a>
+					<?php } ?>
 				</div>
 
 				<!-- #site-contacts -->

@@ -32,13 +32,13 @@ if ( post_password_required() ) {
 			if ( '1' === $quantum_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'quantum' ),
+					esc_html__( 'Комментарий:', 'quantum' ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
 				printf( 
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $quantum_comment_count, 'comments title', 'quantum' ) ),
+					esc_html( _nx( '%1$s Комментариев:', '%1$s Комментариев:', $quantum_comment_count, 'comments title', 'quantum' ) ),
 					number_format_i18n( $quantum_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);

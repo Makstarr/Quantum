@@ -41,34 +41,34 @@
 			<?php echo do_shortcode('[bvi text="Версия для слабовидящих"]'); ?>
 		</div><!-- #widgets -->
 		<div class="footer-contacts">
-			<a class="footer-contacts-phone" href='tel:<?php echo get_option('site_telephone-link', '#'); ?>'>
-				<?php
-				$tel = get_option('site_telephone');
-				if ($tel != null) { ?>
-					<div class="phone-number"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo get_option('site_telephone'); ?></div>
-				<?php } ?>
-			</a>
-			<a class="footer-contacts-phone" href='tel:<?php echo get_option('site_telephone-link-2', '#'); ?>'>
-				<?php
-				$tel = get_option('site_telephone-2');
-				if ($tel != null) { ?>
+			<?php
+			$tel = get_option('site_telephone');
+			if ($tel != null) { ?>
+				<a class="site-header__contacts-phone" href='tel:<?php echo get_option('site_telephone-link', '#'); ?>'>
+					<div class="phone-number"><i class="fa fa-phone" aria-hidden="true"></i><?php echo get_option('site_telephone'); ?></div>
+				</a>
+			<?php } ?>
+			<?php
+			$tel = get_option('site_telephone-2');
+			if ($tel != null) { ?>
+				<a class="site-header__contacts-phone" href='tel:<?php echo get_option('site_telephone-link-2', '#'); ?>'>
 					<div class="phone-number"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo get_option('site_telephone-2'); ?></div>
-				<?php } ?>
-			</a>
-			<a class="footer-contacts-mail" href='mailto:<?php echo get_option('site_mail', '#'); ?>'>
-				<?php
-				$mail = get_option('site_mail');
-				if ($mail != null) { ?>
+				</a>
+			<?php } ?>
+			<?php
+			$mail = get_option('site_mail');
+			if ($mail != null) { ?>
+				<a class="site-header__contacts-mail" href='mailto:<?php echo get_option('site_mail', '#'); ?>'>
 					<div class="mail"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo get_option('site_mail'); ?></div>
-				<?php } ?>
-			</a>
-			<a class="footer-contacts-mail" href='mailto:<?php echo get_option('site_mail-2', '#'); ?>'>
-				<?php
-				$mail = get_option('site_mail-2');
-				if ($mail != null) { ?>
+				</a>
+			<?php } ?>
+			<?php
+			$mail = get_option('site_mail-2');
+			if ($mail != null) { ?>
+				<a class="site-header__contacts-mail" href='mailto:<?php echo get_option('site_mail-2', '#'); ?>'>
 					<div class="mail"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo get_option('site_mail-2'); ?></div>
-				<?php } ?>
-			</a>
+				</a>
+			<?php } ?>
 		</div><!-- #widgets -->
 	</div>
 </footer><!-- #colophon -->
